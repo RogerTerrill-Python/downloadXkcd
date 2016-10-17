@@ -20,7 +20,8 @@ while not url.endswith('#'):
         print('Could not find comic image.')
     else:
         #Grab the src link for the first element found
-        comicUrl = 'http:' + comicElem[0].get('src')      #The comicUrl will have a value like 'http://imgs.xkcd.com/comics/heartbleed_explanation.png'?which you might have noticed looks a lot like a file path.
+        comicUrl = 'http:' + comicElem[0].get('src')        # The comicUrl will have a value like 'http://imgs.xkcd.com/comics/heartbleed_explanation.png'?
+                                                            # which you might have noticed looks a lot like a file path.
         # Download the image
         print('Downloading the image %s...' % (comicUrl))
         res = requests.get(comicUrl)
@@ -38,7 +39,8 @@ while not url.endswith('#'):
     prevLink = soup.select('a[rel="prev"]')[0]      # Afterward, the selector 'a[rel="prev"]' identifies the <a> element with the rel
                                                     # attribute set to prev, and you can use this <a> element?s href attribute to get
                                                     # the previous comic?s URL, which gets stored in url.
-    url = 'http://xkcd.com' + prevLink.get('href')
+                                                    # EX: <a rel="prev" href="/1745/" accesskey="p">&lt; Prev</a>
+    url = 'http://xkcd.com' + prevLink.get('href')  # Selected the tag and now grab the href
     
 print('Done')
         
